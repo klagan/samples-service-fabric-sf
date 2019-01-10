@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.ServiceFabric.Services.Communication;
 using Microsoft.ServiceFabric.Services.Runtime;
+using Sample.Bll;
+using Sample.Bll.Contract;
 
 namespace Sample.Sf.DummyService
 {
@@ -12,15 +16,24 @@ namespace Sample.Sf.DummyService
         /// </summary>
         private static void Main()
         {
+            var services = new ServiceCollection();
+            services.AddSingleton(services.BuildServiceProvider());
+
             try
             {
-                // The ServiceManifest.XML file defines one or more service type names.
-                // Registering a service maps a service type name to a .NET type.
-                // When Service Fabric creates an instance of this service type,
-                // an instance of the class is created in this host process.
-
                 ServiceRuntime.RegisterServiceAsync("Sample.Sf.DummyServiceType",
-                    context => new DummyService(context)).GetAwaiter().GetResult();
+                    context =>
+                    {
+                        services.AddSingleton(context);
+                        services.AddScoped<DummyService>();
+                        services.AddTransient<IDummyLogic, DummyLogic>();
+
+                        return services
+                            .BuildServiceProvider()
+                            .GetService<DummyService>();
+                    })
+                    .GetAwaiter()
+                    .GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(DummyService).Name);
 
