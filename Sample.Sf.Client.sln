@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Bll.Contract", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{B5CF69F8-4D11-4A6B-B448-9CEC01038CC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Sf.DummyService.WebApi", "src\Sample.Sf.DummyService.WebApi\Sample.Sf.DummyService.WebApi.csproj", "{F491B429-A197-41C4-B55C-F30368F539B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,14 @@ Global
 		{1EBF0AD5-A3B4-41FB-A5EE-CEB69C98CC01}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1EBF0AD5-A3B4-41FB-A5EE-CEB69C98CC01}.Release|x64.ActiveCfg = Release|Any CPU
 		{1EBF0AD5-A3B4-41FB-A5EE-CEB69C98CC01}.Release|x64.Build.0 = Release|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Debug|x64.Build.0 = Debug|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Release|x64.ActiveCfg = Release|Any CPU
+		{F491B429-A197-41C4-B55C-F30368F539B6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +112,7 @@ Global
 		{F1293D98-97E7-4469-A725-105F3F69058F} = {B5CF69F8-4D11-4A6B-B448-9CEC01038CC5}
 		{1EBF0AD5-A3B4-41FB-A5EE-CEB69C98CC01} = {B5CF69F8-4D11-4A6B-B448-9CEC01038CC5}
 		{B5CF69F8-4D11-4A6B-B448-9CEC01038CC5} = {8E849643-5FCC-493B-9557-2ED3A6222060}
+		{F491B429-A197-41C4-B55C-F30368F539B6} = {4568F6C3-CF3A-4ADF-950C-DEF14CD87ACF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC49A7FF-4224-4626-BB73-7E7F3A5A1FCD}

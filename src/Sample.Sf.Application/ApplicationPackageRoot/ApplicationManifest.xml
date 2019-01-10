@@ -1,12 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Sample.Sf.ApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
+    <Parameter Name="Sample.Sf.DummyService.WebApi_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
+    <Parameter Name="Sample.Sf.DummyService.WebApi_InstanceCount" DefaultValue="-1" />
     <Parameter Name="Sample.Sf.DummyService_InstanceCount" DefaultValue="-1" />
     <Parameter Name="Sample.Sf.DummyService_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Sample.Sf.DummyService.WebApiPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <EnvironmentOverrides CodePackageRef="code">
+      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[Sample.Sf.DummyService.WebApi_ASPNETCORE_ENVIRONMENT]" />
+    </EnvironmentOverrides>
+  </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Sample.Sf.DummyServicePkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
@@ -17,6 +26,11 @@
          ServiceFabric PowerShell module.
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+    <Service Name="Sample.Sf.DummyService.WebApi" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="Sample.Sf.DummyService.WebApiType" InstanceCount="[Sample.Sf.DummyService.WebApi_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
     <Service Name="Sample.Sf.DummyService" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="Sample.Sf.DummyServiceType" InstanceCount="[Sample.Sf.DummyService_InstanceCount]">
         <SingletonPartition />

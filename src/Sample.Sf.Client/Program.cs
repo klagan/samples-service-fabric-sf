@@ -26,5 +26,12 @@ namespace Sample.Sf.Client
             Console.WriteLine($"Result: {result}");
             Console.ReadLine();
         }
+
+        static void WebApiCall()
+        {
+            //fabric:/Sample.Sf.Application/Sample.Sf.DummyService.WebApi
+
+
+        }
     }
 }
